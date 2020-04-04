@@ -13,7 +13,6 @@ class readconfig:
         self.extList = extensionlist()
 
 
-
     def read(self):
 
         with open(self.config) as f:
@@ -26,7 +25,6 @@ class readconfig:
                     ext.setEnabled(cur['enabled'])
                     ext.setManualInstall(cur['manual'])
                     self.extList.add(ext)
-
 
             
 

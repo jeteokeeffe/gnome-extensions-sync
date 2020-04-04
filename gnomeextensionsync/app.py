@@ -68,29 +68,41 @@ def sync(conf, dryrun, verbose):
     userparse = parselist(gnomeCmd.userlist(), True)
     installedList = userparse.getExtensionList()
 
-
     
         # Sync Extensions
     for ext in expectedList.getAll():
 
         logging.info("Found \"{}\" Extension".format(ext.getName()))
             # https://docs.python.org/3/library/tempfile.html
-        extZipFile = "/tmp/jete.zip"
 
             # Check Extension Exists
         logging.debug("Checking if extension already exists")
         if not installedList.exists(ext.getUuid()):
 
-            logging.info("Downloading extension")
-                # Download
-            gnomeurl.download(ext.getUuid(), 67, extZipFile)
+                # Info on Extension
+            #output = gnomeurl.info(ext.getUuid())
+            #.getVersion()
+            #.getZipFile()
+            extZipFile = "/tmp/jete.zip"
+            extVersion = 67
 
-                # Install
+                # Check Compatible for Gnome
+
+
+                # Download Zip
+            logging.info("Downloading extension")
+            gnomeurl.download(ext.getUuid(), extVersion, extZipFile)
+
+                # Install Extension
             logging.debug("Installing extension")
             if gnomeCmd.install(extZipFile):
                 logging.info("Installation complete")
             else:
                 logging.error("Failed to install extension")
+
+                # Remove Zip file
+            #.remove()
+
         else:
             logging.debug("extension already installed")
 

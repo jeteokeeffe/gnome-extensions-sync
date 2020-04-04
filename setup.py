@@ -24,5 +24,5 @@ setuptools.setup(
         ]
     },
     python_requires='>=3.6',
-    install_requires=['PyYAML']
+    install_requires=['PyYAML', 'Click']
 )
