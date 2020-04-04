@@ -3,19 +3,13 @@ Automate Installation and Settings for Gnome Extensions
 
 ## Requirements
 
-Gnome Shell 3.34 or greater ```gnome-shell -v```
-Python 3.5 or greater
-PIP installed
-
-```
-flatpak -v
-python -v
-pip -v
-```
+* Gnome Shell 3.34 or greater ```gnome-shell --version```
+* Python 3.5 or greater ```python --version```
+* PIP installed ```pip --version```
 
 ## How to Install
 
-You need to have Python 3 and pip module manager installed.
+After verifying you have Python 3 and pip module manager installed, use the following command to install.
 ```
 pip install --user gnome-extension-sync
 ```
@@ -48,4 +42,7 @@ gnome-extension-sync run
 Download & Sync
 ```
 gnome-extension-sync downloadrun
-~~~
+```
+
+
+## Questions
