@@ -16,33 +16,38 @@ pip install --user gnome-extension-sync
 
 ## How to Use
 
-Install Extensions and Settings
+#### Install Extensions and Settings
 ```
 gnome-extension-sync run
 ```
 
-
-Create a configuration file
+#### Create a configuration file
 ```
 gnome-extension-sync generate
 ```
 
-Upload & Download
+#### Upload configuration
 ```
 gnome-extension-sync upload
+```
+
+#### Download Configuration file
+```
 gnome-extension-sync download
 ```
 
-
-Sync Extensions
-```
-gnome-extension-sync run
-```
-
-Download & Sync
+#### Download & Sync
+Remotely pull down your configuration file and install extensions.
 ```
 gnome-extension-sync downloadrun
 ```
 
-
 ## Questions
+
+What if an extension is already installed and gnome-extension-sync run is attempted?
+gnome-extension-sync will detect if the extension is installed and take no action.
+
+Will gnome-extension-sync update existing extensions?
+Nope.
+
+

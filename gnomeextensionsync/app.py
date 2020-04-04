@@ -48,9 +48,9 @@ def generate(conf, verbose):
 @click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
 @click.option('--dryrun', default=0, help='configuration file')
 @click.option('-v', '--verbose', is_flag=True)
-def sync(conf, dryrun, verbose):
+def run(conf, dryrun, verbose):
     """
-    Sync (add/remove) gnome extensions
+    Run a sync (add/remove) gnome extensions
     """
 
     logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
@@ -124,6 +124,33 @@ def sync(conf, dryrun, verbose):
 
 
     logging.info("Sync complete")
+
+@cli.command()
+@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+@click.option('--dryrun', default=0, help='configuration file')
+@click.option('-v', '--verbose', is_flag=True)
+def downloadrun(conf, dryrun, verbose):
+    """
+    """
+    print("to be implemented")
+
+@cli.command()
+@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+@click.option('--dryrun', default=0, help='configuration file')
+@click.option('-v', '--verbose', is_flag=True)
+def download(conf, dryrun, verbose):
+    """
+    """
+    print("to be implemented")
+
+@cli.command()
+@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+@click.option('--dryrun', default=0, help='configuration file')
+@click.option('-v', '--verbose', is_flag=True)
+def upload(conf, dryrun, verbose):
+    """
+    """
+    print("to be implemented")
 
 def main():
     cli()

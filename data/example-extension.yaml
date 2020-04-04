@@ -1,0 +1,32 @@
+sync:
+  gnome-extensions:
+  - enabled: false
+    manual: true
+    name: KStatusNotifierItem/AppIndicator Support
+    url: https://github.com/ubuntu/gnome-shell-extension-appindicator
+    uuid: appindicatorsupport@rgcjonas.gmail.com
+  - enabled: true
+    manual: true
+    name: Screenshot Tool
+    url: https://github.com/OttoAllmendinger/gnome-shell-screenshot/
+    uuid: gnome-shell-screenshot@ttll.de
+  - enabled: false
+    manual: true
+    name: Dash to Dock
+    url: https://micheleg.github.io/dash-to-dock/
+    uuid: dash-to-dock@micxgx.gmail.com
+  - enabled: false
+    manual: true
+    name: Applications Menu
+    url: https://gitlab.gnome.org/GNOME/gnome-shell-extensions
+    uuid: apps-menu@gnome-shell-extensions.gcampax.github.com
+  - enabled: false
+    manual: true
+    name: Caffeine
+    url: https://github.com/eonpatapon/gnome-shell-extension-caffeine
+    uuid: caffeine@patapon.info
+  - enabled: true
+    manual: true
+    name: Horizontal workspaces
+    url: https://gitlab.gnome.org/GNOME/gnome-shell-extensions
+    uuid: horizontal-workspaces@gnome-shell-extensions.gcampax.github.com
