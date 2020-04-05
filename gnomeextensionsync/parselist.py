@@ -36,8 +36,9 @@ class parselist():
                     ext.setVersion(line.split(":")[1].strip())
                 elif line.startswith("  State:"):
                     value = line.split(":")[1].strip()
-                    #ext.setName(line.strip().split(":")[1])
-                    #ext.setEnabled(True if data[1] == "ENABLED" else False)
+                    if value == "ENABLED":
+                        ext.setEnabled(True)
+
                     self.extList.add(ext)
                     ext = None
                     count = 0

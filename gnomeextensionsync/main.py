@@ -132,7 +132,7 @@ def run(conf, dryrun, verbose):
 def downloadrun(conf, dryrun, verbose):
     """
     """
-    print("to be implemented")
+    logging.error("to be implemented")
 
 @cli.command()
 @click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
@@ -141,7 +141,7 @@ def downloadrun(conf, dryrun, verbose):
 def download(conf, dryrun, verbose):
     """
     """
-    print("to be implemented")
+    logging.error("to be implemented")
 
 @cli.command()
 @click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
@@ -150,7 +150,7 @@ def download(conf, dryrun, verbose):
 def upload(conf, dryrun, verbose):
     """
     """
-    print("to be implemented")
+    logging.error("to be implemented")
 
 def main():
     cli()
