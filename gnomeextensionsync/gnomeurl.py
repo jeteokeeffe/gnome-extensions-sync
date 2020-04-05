@@ -15,6 +15,7 @@ class gnomeurl():
     def info(uuid):
         url = "https://extensions.gnome.org/extension-query/?page=1&shell_version=all&search={}".format(uuid)
         resp = requests.get(url)
-        print(resp)
+        if resp.status_code == 200:
+            return resp.content
 
-        return True
+        return False

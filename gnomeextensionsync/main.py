@@ -80,7 +80,8 @@ def run(conf, dryrun, verbose):
         if not installedList.exists(ext.getUuid()):
 
                 # Info on Extension
-            #output = gnomeurl.info(ext.getUuid())
+            output = gnomeurl.info(ext.getUuid())
+            print(output)
             #.getVersion()
             #.getZipFile()
             extZipFile = "/tmp/jete.zip"
