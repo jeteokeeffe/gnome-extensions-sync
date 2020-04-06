@@ -9,6 +9,7 @@ from .writeconfig import writeconfig
 from .readconfig import readconfig
 from .dconfcommand import dconfcommand
 from .gnomeurl import gnomeurl
+from .parsejson import parsejson
 
 
 @click.group()
@@ -79,7 +80,8 @@ def run(conf, dryrun, verbose):
 
                 # Info on Extension
             output = gnomeurl.info(ext.getUuid())
-            print(output)
+            pj = parsejson()
+            pj.parse(output)
             #.getVersion()
             #.getZipFile()
             extZipFile = "/tmp/jete.zip"
@@ -94,10 +96,10 @@ def run(conf, dryrun, verbose):
 
                 # Install Extension
             logging.debug("Installing extension")
-            if gnomeCmd.install(extZipFile):
-                logging.info("Installation complete")
-            else:
-                logging.error("Failed to install extension")
+            #if gnomeCmd.install(extZipFile):
+            #    logging.info("Installation complete")
+            #else:
+            #    logging.error("Failed to install extension")
 
                 # Remove Zip file
             #.remove()
