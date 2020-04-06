@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gnome-extension-sync", 
-    version="0.1.2",
+    version="0.1.3",
     author="JJO",
     author_email="jjo@yahoo.com",
     description="Automate installation of gnome extensions for your linux environment",
