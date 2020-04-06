@@ -13,7 +13,6 @@ class extensionlist:
 
     def exists(self, uuid):
         for ext in self.exts:
-            print("{} == {}".format(ext.getUuid(), uuid))
             if ext.getUuid() == uuid:
                 return True
 

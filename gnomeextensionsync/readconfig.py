@@ -1,5 +1,6 @@
-import yaml
 import os.path
+import json
+import logging
 
 from .extensionlist import extensionlist
 from .extension import extension
@@ -16,15 +17,19 @@ class readconfig:
     def read(self):
 
         with open(self.config) as f:
-            data = yaml.load_all(f, Loader=yaml.FullLoader)
-            for sync in data:
-                for cur in sync['sync']['gnome-extensions']:
-                    ext = extension()
-                    ext.setUuid(cur['uuid'])
-                    ext.setName(cur['name'])
-                    ext.setEnabled(cur['enabled'])
-                    ext.setManualInstall(cur['manual'])
-                    self.extList.add(ext)
+            #parsed = yaml.load_all(f, Loader=yaml.FullLoader)
+            parsed = json.load(f)
+            if not parsed['sync']['gnome-extensions']:
+                logging.error("Bad format or missing gnome extensions")
+                return False
+
+            for cur in parsed['sync']['gnome-extensions']:
+                ext = extension()
+                ext.setUuid(cur['uuid'])
+                ext.setName(cur['name'])
+                ext.setEnabled(cur['enabled'])
+                ext.setManualInstall(cur['manual'])
+                self.extList.add(ext)
 
             
 
