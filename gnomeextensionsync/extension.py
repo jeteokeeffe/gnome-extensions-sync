@@ -18,6 +18,7 @@ class extension():
         self.url = ""
         self.isEnabled = False
         self.isManual = False
+        self.settings = None
 
     def setUuid(self, uuid):
         self.uuid = uuid
@@ -45,6 +46,9 @@ class extension():
 
     def setManualInstall(self, manual: bool):
         self.isManual = manual
+
+    def setSettings(self, settings):
+        self.settings = settings
 
 
     def getUuid(self) -> str:
@@ -76,4 +80,7 @@ class extension():
 
     def getManualInstall(self) -> bool:
         return self.isManual
+
+    def getSettings(self):
+        return self.settings
 

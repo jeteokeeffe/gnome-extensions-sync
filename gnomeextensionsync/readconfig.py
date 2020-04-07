@@ -14,7 +14,7 @@ class readconfig:
         self.extList = extensionlist()
 
 
-    def read(self):
+    def read(self) -> bool:
 
         with open(self.config) as f:
             #parsed = yaml.load_all(f, Loader=yaml.FullLoader)
@@ -29,7 +29,13 @@ class readconfig:
                 ext.setName(cur['name'])
                 ext.setEnabled(cur['enabled'])
                 ext.setManualInstall(cur['manual'])
+
+                #if "settings" in cur:
+                #    ext.setSettings()
+                    
                 self.extList.add(ext)
+
+        return True
 
             
 
