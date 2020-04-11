@@ -1,5 +1,6 @@
-import yaml
 import os
+import json
+import logging
 
 
 from .extensionlist import extensionlist
@@ -19,27 +20,36 @@ class writeconfig:
     def setExtensionList(self, extlist: extensionlist):
         self.extlist = extlist
 
+
     def write(self):
 
             # Extensions
-        extyaml = []
+        extArr = []
         for ext in self.extlist.getAll():
             if ext.getManualInstall():
-                extdata = { 'name' : ext.getName(),
+
+                    # Extension Details
+                extData = { 'name' : ext.getName(),
                     'uuid': ext.getUuid(),
                     'url': ext.getUrl(),
                     'enabled': ext.getEnabled(),
                     'manual': ext.getManualInstall(),
                 }
-                extyaml.append(extdata)
+
+                    # Check if Extension has settings
+                settings = ext.getSettings()
+                if len(settings) > 0:
+                    extData["settings"] = []
+
+                extArr.append(extData)
+
 
 
         data = {
             'sync': {
-                'gnome-extensions': extyaml
+                'gnome-extensions': extArr
             }
         }
-
 
             # Check if path is writable
         os.path.exists(self.config)
@@ -50,9 +60,11 @@ class writeconfig:
             # Open as writable
         try:
             with open(self.config, 'w') as f:
-                result = yaml.dump(data, f)
+                json.dump(data, f, indent=4)
         except IOError as e:
-            print("error")
+            logging.error("Failed to write configuration file")
+            return False
 
         return True
+
 

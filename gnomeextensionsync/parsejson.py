@@ -32,11 +32,18 @@ class parsejson:
                     #print("Version: {}".format(gnomeVersion))
                     if type(i['shell_version_map'][gnomeVersion]) == dict:
                         versionArr.append(i['shell_version_map'][gnomeVersion])
-                    print(versionArr)
-                    self.version = { gnomeVersion : versionArr }
+                    #print(versionArr)
+                    self.versions = { gnomeVersion : versionArr }
 
         return False
                 
+    def getVersion(self, gnomeShellVer):
+        if gnomeShellVer in self.versions:
+            for i in self.versions[gnomeShellVer]:
+                return i["version"]
+            
+        return False
+
     def getVersions(self):
         return self.versions
 
@@ -48,4 +55,7 @@ class parsejson:
 
     def getLink(self):
         return self.link
+
+    def supportsVersion(self, gnomeShellVer):
+        return True
 

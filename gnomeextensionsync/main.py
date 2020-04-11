@@ -10,6 +10,7 @@ from .readconfig import readconfig
 from .dconfcommand import dconfcommand
 from .gnomeurl import gnomeurl
 from .parsejson import parsejson
+from .gnomeshell import gnomeshell
 
 
 @click.group()
@@ -19,14 +20,13 @@ def cli():
 
 @cli.command()
 @click.option('-v', '--verbose', is_flag=True)
-@click.option('-c', '--conf', default='', help='configuration file')
+@click.option('-c', '--conf', default='extensions.json', help='configuration file')
 #@click.option('--dryrun', default=0, help='configuration file')
 def generate(conf, verbose):
     """
     Generate a configuration file based on your current extension setup
     """
 
-    configFile = 'gnome-ext.yaml'
     logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
     cmd = extensioncommand()
@@ -39,14 +39,14 @@ def generate(conf, verbose):
 
         # Write Configuration
     logging.debug("Writing configuration file")
-    write = writeconfig(configFile)
+    write = writeconfig(conf)
     write.setExtensionList(extList)
     write.write()
     logging.info("Generate complete")
 
 
 @cli.command()
-@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+@click.option('-c', '--conf', default='extensions.json', help='configuration file')
 @click.option('--dryrun', default=0, help='configuration file')
 @click.option('-v', '--verbose', is_flag=True)
 def run(conf, dryrun, verbose):
@@ -56,6 +56,8 @@ def run(conf, dryrun, verbose):
 
     logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
+    gnomeShell = gnomeshell()
+    logging.debug("gnome-shell version: {}".format(gnomeShell.getVersion()))
     gnomeCmd = extensioncommand()
     logging.debug("gnome-extensions version: {}".format(gnomeCmd.version()))
 
@@ -73,7 +75,6 @@ def run(conf, dryrun, verbose):
         # Sync Extensions
     for ext in expectedList.getAll():
 
-        logging.info("Found \"{}\" Extension".format(ext.getName()))
             # https://docs.python.org/3/library/tempfile.html
 
             # Check Extension Exists
@@ -84,27 +85,28 @@ def run(conf, dryrun, verbose):
             output = gnomeurl.info(ext.getUuid())
             pj = parsejson()
             pj.parse(output)
-            #.getVersion()
-            #.getZipFile()
+            extVersion = pj.getVersion(gnomeShell.getMajorVersion())
             extZipFile = "/tmp/jete.zip"
-            extVersion = 67
 
                 # Check Compatible for Gnome
 
 
-                # Download Zip
-            logging.info("Downloading extension")
-            gnomeurl.download(ext.getUuid(), extVersion, extZipFile)
+            if extVersion == False:
+                logging.warn("No compatible version found")
+            else:
+                    # Download Zip
+                logging.info("Downloading extension (ver: {})".format(extVersion))
+                gnomeurl.download(ext.getUuid(), extVersion, extZipFile)
 
-                # Install Extension
-            logging.debug("Installing extension")
-            #if gnomeCmd.install(extZipFile):
-            #    logging.info("Installation complete")
-            #else:
-            #    logging.error("Failed to install extension")
+                    # Install Extension
+                logging.debug("Installing extension")
+                #if gnomeCmd.install(extZipFile):
+                #    logging.info("Installation complete")
+                #else:
+                #    logging.error("Failed to install extension")
 
-                # Remove Zip file
-            #.remove()
+                    # Remove Zip file
+                #.remove()
 
         else:
             logging.debug("extension already installed")
