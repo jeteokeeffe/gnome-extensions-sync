@@ -1,4 +1,4 @@
-# gnome-extension-sync
+# gnome-extensions-sync
 Automate Installation and Settings for Gnome Extensions
 
 ## Purpose
