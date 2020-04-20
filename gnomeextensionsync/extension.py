@@ -35,10 +35,10 @@ class extension():
     def setState(self, state):
         self.state = state
 
-    def setPath(self, path):
+    def setPath(self, path: str):
         self.path = path
 
-    def setURL(self, url):
+    def setURL(self, url: str):
         self.url = url
 
     def setEnabled(self, isEnabled: bool):

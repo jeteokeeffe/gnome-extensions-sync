@@ -38,8 +38,9 @@ class writeconfig:
 
                     # Check if Extension has settings
                 settings = ext.getSettings()
-                if len(settings) > 0:
-                    extData["settings"] = []
+                if settings:
+                    if len(settings) > 0:
+                        extData["settings"] = []
 
                 extArr.append(extData)
 

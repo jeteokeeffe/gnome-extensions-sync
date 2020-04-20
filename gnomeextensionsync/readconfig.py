@@ -17,7 +17,6 @@ class readconfig:
     def read(self) -> bool:
 
         with open(self.config) as f:
-            #parsed = yaml.load_all(f, Loader=yaml.FullLoader)
             parsed = json.load(f)
             if not parsed['sync']['gnome-extensions']:
                 logging.error("Bad format or missing gnome extensions")
@@ -30,8 +29,8 @@ class readconfig:
                 ext.setEnabled(cur['enabled'])
                 ext.setManualInstall(cur['manual'])
 
-                #if "settings" in cur:
-                #    ext.setSettings()
+                if "settings" in cur:
+                    ext.setSettings()
                     
                 self.extList.add(ext)
 

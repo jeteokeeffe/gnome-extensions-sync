@@ -20,7 +20,7 @@ def cli():
 
 @cli.command()
 @click.option('-v', '--verbose', is_flag=True)
-@click.option('-c', '--conf', default='extensions.json', help='configuration file')
+@click.option('-c', '--conf', default='.config/gnome-extensions-sync/extensions.json', help='configuration file')
 #@click.option('--dryrun', default=0, help='configuration file')
 def generate(conf, verbose):
     """
@@ -29,8 +29,15 @@ def generate(conf, verbose):
 
     logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.DEBUG)
 
+    if conf == ".config/gnome-extensions-sync/extensions.json":
+        confFile = os.environ['HOME'] + '/' + conf
+        confPath = os.path.dirname(os.path.realpath(confFile))
+        Path(confPath).mkdir(parents=True, exist_ok=True)
+
+
     cmd = extensioncommand()
     logging.debug("gnome-extensions version: {}".format(cmd.version()))
+    logging.debug("Configuration file: {}".format(conf))
     
         # Get installed extensions
     userparse = parselist(cmd.userlist(), True)
@@ -46,7 +53,7 @@ def generate(conf, verbose):
 
 
 @cli.command()
-@click.option('-c', '--conf', default='extensions.json', help='configuration file')
+@click.option('-c', '--conf', default='.config/gnome-extensions-sync/extensions.json', help='configuration file')
 @click.option('--dryrun', default=0, help='configuration file')
 @click.option('-v', '--verbose', is_flag=True)
 def run(conf, dryrun, verbose):
@@ -60,6 +67,7 @@ def run(conf, dryrun, verbose):
     logging.debug("gnome-shell version: {}".format(gnomeShell.getVersion()))
     gnomeCmd = extensioncommand()
     logging.debug("gnome-extensions version: {}".format(gnomeCmd.version()))
+    logging.debug("Configuration file: {}".format(conf))
 
         # Read Configuration file
         # Get Expected List of Extensions
@@ -130,32 +138,32 @@ def run(conf, dryrun, verbose):
 
     logging.info("Sync complete")
 
-@cli.command()
-@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
-@click.option('--dryrun', default=0, help='configuration file')
-@click.option('-v', '--verbose', is_flag=True)
-def downloadrun(conf, dryrun, verbose):
-    """
-    """
-    logging.error("to be implemented")
+#@cli.command()
+#@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+#@click.option('--dryrun', default=0, help='configuration file')
+#@click.option('-v', '--verbose', is_flag=True)
+#def downloadrun(conf, dryrun, verbose):
+#    """
+#    """
+#    logging.error("to be implemented")
 
-@cli.command()
-@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
-@click.option('--dryrun', default=0, help='configuration file')
-@click.option('-v', '--verbose', is_flag=True)
-def download(conf, dryrun, verbose):
-    """
-    """
-    logging.error("to be implemented")
+#@cli.command()
+#@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+#@click.option('--dryrun', default=0, help='configuration file')
+#@click.option('-v', '--verbose', is_flag=True)
+#def download(conf, dryrun, verbose):
+#    """
+#    """
+#    logging.error("to be implemented")
 
-@cli.command()
-@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
-@click.option('--dryrun', default=0, help='configuration file')
-@click.option('-v', '--verbose', is_flag=True)
-def upload(conf, dryrun, verbose):
-    """
-    """
-    logging.error("to be implemented")
+#@cli.command()
+#@click.option('-c', '--conf', default='gnome-ext.yaml', help='configuration file')
+#@click.option('--dryrun', default=0, help='configuration file')
+#@click.option('-v', '--verbose', is_flag=True)
+#def upload(conf, dryrun, verbose):
+#    """
+#    """
+#    logging.error("to be implemented")
 
 def main():
     cli()
