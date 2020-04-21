@@ -3,10 +3,10 @@ import json
 import logging
 
 
-from .extensionlist import extensionlist
+from gnomeextensionssync.structs.extensionlist import extensionlist
 
 
-class writeconfig:
+class write:
     """
     Create gnome extensions configuration file
     """

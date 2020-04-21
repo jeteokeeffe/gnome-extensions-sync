@@ -2,11 +2,11 @@ import os.path
 import json
 import logging
 
-from .extensionlist import extensionlist
-from .extension import extension
+from gnomeextensionssync.structs.extensionlist import extensionlist
+from gnomeextensionssync.structs.extension import extension
 
 
-class readconfig:
+class read:
 
 
     def __init__(self, config: str = ""):

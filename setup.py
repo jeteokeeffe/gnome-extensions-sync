@@ -16,7 +16,7 @@ setuptools.setup(
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+        "Operating System :: Linux X11 Applications",
     ],
     entry_points={
         "console_scripts": [
@@ -24,5 +24,5 @@ setuptools.setup(
         ]
     },
     python_requires='>=3.6',
-    install_requires=['Click']
+    install_requires=['Click', 'requests']
 )

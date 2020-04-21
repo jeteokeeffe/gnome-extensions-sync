@@ -1,4 +1,4 @@
-from .extension import extension
+from gnomeextensionssync.structs.extension import extension
 
 class parseinfo():
 

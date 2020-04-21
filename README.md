@@ -76,17 +76,17 @@ https://fedoramagazine.org/take-back-your-dotfiles-with-chezmoi/
 ## Bug Reports
 
 Create an issue, summary of the problem and include the following things
-* Distro (`hostname`)
+* Distro (`hostnamectl`)
 * Gnome Shell (`gnome-shell --version`)
 * Gnome Extension version (`gnome-extensions`)
 * gnome-extensions-sync configuration file (`~/.config/gnome-extensions-sync/extensions.json`)
 
 ## Questions
 
-What if an extension is already installed and gnome-extension-sync run is attempted?
+###### What if an extension is already installed and gnome-extension-sync run is attempted?
 gnome-extension-sync will detect if the extension is installed and take no action.
 
-Will gnome-extension-sync update existing extensions?
+###### Will gnome-extension-sync update existing extensions?
 Nope.
 
 

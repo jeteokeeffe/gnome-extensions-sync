@@ -1,5 +1,5 @@
-from .extension import extension
-from .extensionlist import extensionlist
+from gnomeextensionssync.structs.extension import extension
+from gnomeextensionssync.structs.extensionlist import extensionlist
 
 
 class parselist():
