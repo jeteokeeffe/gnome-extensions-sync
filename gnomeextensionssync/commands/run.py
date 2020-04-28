@@ -26,11 +26,11 @@ class run(command):
         logging.debug("gnome-shell version: {}".format(gnomeShell.getVersion()))
         gnomeCmd = extensioncommand()
         logging.debug("gnome-extensions version: {}".format(gnomeCmd.version()))
-        logging.debug("Configuration file: {}".format(conf))
+        logging.debug("Configuration file: {}".format(self.conf))
 
             # Read Configuration file
             # Get Expected List of Extensions
-        read = readconfig(conf)
+        read = readconfig(self.conf)
         read.read()
         expectedList = read.getExtensionList()
 
