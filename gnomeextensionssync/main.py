@@ -1,15 +1,13 @@
 import click
+import logging
 
-from .extensioncommand import extensioncommand
-from .extensionlist import extensionlist
-from .parseinfo import parseinfo
-from .parselist import parselist
-from .writeconfig import writeconfig
-from .readconfig import readconfig
-from .dconfcommand import dconfcommand
-from .gnomeurl import gnomeurl
-from .parsejson import parsejson
-from .gnomeshell import gnomeshell
+#from .extensioncommand import extensioncommand
+#from .parseinfo import parseinfo
+#from .parselist import parselist
+#from .dconfcommand import dconfcommand
+#from .gnomeurl import gnomeurl
+#from .parsejson import parsejson
+#from .gnomeshell import gnomeshell
 
 from gnomeextensionssync.commands.generate import generate as generatecmd
 from gnomeextensionssync.commands.run import run as runcmd

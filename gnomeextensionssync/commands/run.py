@@ -1,17 +1,16 @@
 import logging
 
+from gnomeextensionssync.commands.command import command
 from gnomeextensionssync.configs.read import read as readconfig
 
-from .extensioncommand import extensioncommand
-from .extensionlist import extensionlist
-from .parseinfo import parseinfo
-from .parselist import parselist
-from .writeconfig import writeconfig
-from .readconfig import readconfig
-from .dconfcommand import dconfcommand
-from .gnomeurl import gnomeurl
-from .parsejson import parsejson
-from .gnomeshell import gnomeshell
+from gnomeextensionssync.extensioncommand import extensioncommand
+from gnomeextensionssync.structs.extensionlist import extensionlist
+from gnomeextensionssync.parseinfo import parseinfo
+from gnomeextensionssync.parselist import parselist
+from gnomeextensionssync.dconfcommand import dconfcommand
+from gnomeextensionssync.gnomeurl import gnomeurl
+from gnomeextensionssync.parsejson import parsejson
+from gnomeextensionssync.gnomeshell import gnomeshell
 
 
 class run(command):

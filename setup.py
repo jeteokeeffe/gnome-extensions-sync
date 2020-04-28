@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="gnome-extension-sync", 
+    name="gnome-extensions-sync", 
     version="0.1.3",
     author="JJO",
     author_email="jjo@yahoo.com",
     description="Automate installation of gnome extensions for your linux environment",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/jeteokeeffe/gnome-extension-sync",
+    url="https://github.com/jeteokeeffe/gnome-extensions-sync",
     packages=find_packages(exclude=["tests.*", "tests"]),
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -20,7 +20,7 @@ setuptools.setup(
     ],
     entry_points={
         "console_scripts": [
-            "gnome-extension-sync=gnomeextensionsync.main:main"
+            "gnome-extension-sync=gnomeextensionssync.main:main"
         ]
     },
     python_requires='>=3.6',
