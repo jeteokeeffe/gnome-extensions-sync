@@ -67,10 +67,10 @@ class run(command):
 
                         # Install Extension
                     logging.debug("Installing extension")
-                    #if gnomeCmd.install(extZipFile):
-                    #    logging.info("Installation complete")
-                    #else:
-                    #    logging.error("Failed to install extension")
+                    if gnomeCmd.install(extZipFile):
+                        logging.info("Installation complete")
+                    else:
+                        logging.error("Failed to install extension")
 
                         # Remove Zip file
                     #.remove()

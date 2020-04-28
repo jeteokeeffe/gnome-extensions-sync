@@ -18,6 +18,7 @@ class extensioncommand():
 
     def install(self, zipFile: str):
         cmd = "gnome-extensions install {}".format(zipFile)
+        print(cmd)
         result=subprocess.run(cmd, shell=True, universal_newlines=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if result.returncode == 0:
             return True
